@@ -105,7 +105,24 @@ public class ArrayHelperImplTest {
         int[] returnedValue = testClass.leftUnion(leftArray, rightArray);
         assertArrayEquals(expectedValue, returnedValue);
     }
-
+    @Test
+    public void testLeftUnion_RightArrayMaxValueSize() throws Exception {
+        int[] leftArray = new int[]{1, 5, 4, 23, 65, 32, 78};
+        int[] rightArray = new int[Integer.MAX_VALUE];
+        int[] expectedValue = new int[]{1, 5, 4, 23, 65, 32, 78};
+        int[] returnedValue = testClass.leftUnion(leftArray, rightArray);
+        assertArrayEquals(expectedValue, returnedValue);
+    }
+    @Test
+    public void testLeftUnion_LeftArrayMaxValueSize() throws Exception {
+        Runtime runtime = Runtime.getRuntime();
+        System.out.println(runtime.freeMemory()/(1024*1024) + "MB");
+        int[] leftArray = new int[Integer.MAX_VALUE];
+        int[] rightArray = new int[]{3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
+        int[] expectedValue = new int[5];
+        int[] returnedValue = testClass.leftUnion(leftArray, rightArray);
+        assertArrayEquals(expectedValue, returnedValue);
+    }
 
     @Test
     public void testMerge() throws Exception {
@@ -259,4 +276,5 @@ public class ArrayHelperImplTest {
         int[] returnedValue = testClass.outerUnion(leftArray, rightArray);
         assertArrayEquals(expectedValue, returnedValue);
     }
+
 }

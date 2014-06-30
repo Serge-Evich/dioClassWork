@@ -12,6 +12,10 @@ public class ArrayHelperImpl implements ArrayHelper {
             leftArray = new int[0];
         if (rightArray == null)
             rightArray = new int[0];
+        if (isMaxValueSize(leftArray))
+            leftArray = new int[0];
+        if (isMaxValueSize(rightArray))
+            rightArray = new int[0];
 
         int count = 0;
 
@@ -34,6 +38,11 @@ public class ArrayHelperImpl implements ArrayHelper {
             leftArray = new int[0];
         if (rightArray == null)
             rightArray = new int[0];
+        if (isMaxValueSize(leftArray))
+            leftArray = new int[0];
+        if (isMaxValueSize(rightArray))
+            rightArray = new int[0];
+
         int count = 0;
         int[] tempRight = new int[rightArray.length];
         if (isEmpty(leftArray) && isEmpty(rightArray)) {
@@ -150,6 +159,13 @@ public class ArrayHelperImpl implements ArrayHelper {
             res[i] = array[i];
         }
         return res;
+    }
+    private boolean isMaxValueSize(int[] array) {
+        Integer length = Integer.valueOf(array.length);
+        if (length.equals(Integer.MAX_VALUE))
+            return true;
+        else
+            return false;
     }
 
 }
