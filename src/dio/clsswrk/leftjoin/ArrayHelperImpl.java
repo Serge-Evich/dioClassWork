@@ -28,7 +28,7 @@ public class ArrayHelperImpl implements ArrayHelper {
                 }
             }
         }
-        tempRight = realLength(tempRight, count);
+        tempRight = trim(tempRight, count);
         int[] temp = arrayMerge(leftArray, tempRight);
         return temp;
     }
@@ -58,6 +58,10 @@ public class ArrayHelperImpl implements ArrayHelper {
         temp = noDup(temp);
         return temp;
     }
+
+    public Product[] mergeProduct(Product[] prod1, Product[] prod2) {
+        return productMerge(prod1, prod2);
+    }
     public int[] innerUnion(int[] leftArray, int[] rightArray) {
 
         if (leftArray == null)
@@ -78,7 +82,7 @@ public class ArrayHelperImpl implements ArrayHelper {
                 count++;
             }
         }
-        int[] temp = realLength(tempArray, count);
+        int[] temp = trim(tempArray, count);
         return temp;
     }
     public int[] outerUnion(int[] leftArray, int[] rightArray) {
@@ -103,7 +107,7 @@ public class ArrayHelperImpl implements ArrayHelper {
             }
         }
 
-        int[] temp = realLength(tempArray, count);
+        int[] temp = trim(tempArray, count);
         return temp;
     }
     private boolean contains(int el, int[] array) {
@@ -139,7 +143,7 @@ public class ArrayHelperImpl implements ArrayHelper {
                 count++;
             }
         }
-        int[] res = realLength(tempArray, count);
+        int[] res = trim(tempArray, count);
         return res;
 
     }
@@ -153,7 +157,17 @@ public class ArrayHelperImpl implements ArrayHelper {
         }
         return res;
     }
-    private int[] realLength(int[] array, int length) {
+    private Product[] productMerge(Product[] prod1, Product[] prod2) {
+        Product[] res = new Product[prod1.length + prod2.length];
+        for (int i = 0;i < prod1.length;i++) {
+            res[i] = prod1[i];
+        }
+        for (int i = prod1.length;i < res.length;i++) {
+            res[i] = prod2[i - prod1.length];
+        }
+        return res;
+    }
+    private int[] trim(int[] array, int length) {
         int[] res = new int[length];
         for (int i = 0;i < res.length;i++) {
             res[i] = array[i];

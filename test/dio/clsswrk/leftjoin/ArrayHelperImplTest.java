@@ -9,12 +9,13 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertArrayEquals;
 
 public class ArrayHelperImplTest {
-    private  ArrayHelper testClass;
+    private ArrayHelper testClass;
 
     @Before
     public void setup()
     {
         testClass = new ArrayHelperImpl();
+
     }
 //    int[] leftArray = new int[]{1, 5, 4, 23, 65, 32, 78};
 //    int[] rightArray = new int[]{3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
@@ -117,6 +118,8 @@ public class ArrayHelperImplTest {
     public void testLeftUnion_LeftArrayMaxValueSize() throws Exception {
         Runtime runtime = Runtime.getRuntime();
         System.out.println(runtime.freeMemory()/(1024*1024) + "MB");
+        System.out.println(runtime.totalMemory()/(1024*1024) + "MB");
+        System.out.println(runtime.maxMemory()/(1024*1024) + "MB");
         int[] leftArray = new int[Integer.MAX_VALUE];
         int[] rightArray = new int[]{3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
         int[] expectedValue = new int[5];

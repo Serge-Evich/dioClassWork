@@ -8,6 +8,7 @@ public interface ArrayHelper {
     int[] merge(int[] leftArray, int[] rightArray);
     int[] innerUnion(int[] leftArray, int[] rightArray);
     int[] outerUnion(int[] leftArray, int[] rightArray);
+    Product[] mergeProduct(Product[] prod1, Product[] prod2);
 
 
 
