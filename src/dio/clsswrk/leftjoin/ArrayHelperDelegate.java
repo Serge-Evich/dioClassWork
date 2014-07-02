@@ -3,6 +3,7 @@ package dio.clsswrk.leftjoin;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 /**
  * Created by Димон on 01.07.2014.
@@ -48,9 +49,8 @@ public class ArrayHelperDelegate {
             }
         }
 
-        T[] res = list.toArray(array);
+        return (T[]) Arrays.copyOf(list.toArray(), list.size(), array.getClass());
 
-        return res;
     }
 
     public Product[] mergeProduct(Product[] prod1, Product[] prod2) {
