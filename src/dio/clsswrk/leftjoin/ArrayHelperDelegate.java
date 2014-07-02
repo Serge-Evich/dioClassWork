@@ -26,7 +26,7 @@ public class ArrayHelperDelegate {
         }
         return false;
     }
-    private <T> boolean contains(T el,List<T> list) {
+    private <T> boolean contains(T el, List<T> list) {
         if (el == null || list == null)
             throw new IllegalArgumentException("null in contains method arguments");
         for (T t : list) {
@@ -49,7 +49,7 @@ public class ArrayHelperDelegate {
             }
         }
 
-        return (T[]) Arrays.copyOf(list.toArray(), list.size(), array.getClass());
+        return (T[]) Arrays.copyOf(list.toArray(), list.size(), array.getClass());// line from ArrayList source
 
     }
 
