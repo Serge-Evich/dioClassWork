@@ -121,11 +121,16 @@ public class Product {
         public Builder() {
 
         }
-        public Builder(String name, Category category) {
+
+        public Builder name(String name) {
             this.name = name;
-            this.category = category;
+            return this;
         }
 
+        public Builder category(Category category) {
+            this.category = category;
+            return this;
+        }
         public Builder price(double price) {
             this.price = price;
             return this;
@@ -155,14 +160,6 @@ public class Product {
         }
     }
 
-    public static void main(String[] args) {
-        Product telephone = new Product.Builder("Samsung S4", Category.SMARTPHONE)
-                .price(599.99)
-                .height(30)
-                .length(40)
-                .width(2)
-                .weight(150)
-                .build();
-        System.out.println(telephone);
-    }
+
+
 }
