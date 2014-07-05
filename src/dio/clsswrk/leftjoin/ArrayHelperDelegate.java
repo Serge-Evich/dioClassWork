@@ -36,8 +36,6 @@ public class ArrayHelperDelegate {
         return false;
     }
     private <T> T[] noDup(T[] array) {
-
-
         if (array == null)
             throw new IllegalArgumentException("null in noDup method argument");
         List<T> list = new ArrayList<T>();
@@ -48,9 +46,7 @@ public class ArrayHelperDelegate {
                 list.add(t);
             }
         }
-
         return (T[]) Arrays.copyOf(list.toArray(), list.size(), array.getClass());// line from ArrayList source
-
     }
 
     public Product[] mergeProduct(Product[] prod1, Product[] prod2) {

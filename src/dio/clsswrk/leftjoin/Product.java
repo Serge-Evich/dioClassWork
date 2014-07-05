@@ -109,7 +109,7 @@ public class Product {
     }
 
     public static class Builder {
-        //обязательные поля
+
         private String name;
         private Category category;
         private double price;
