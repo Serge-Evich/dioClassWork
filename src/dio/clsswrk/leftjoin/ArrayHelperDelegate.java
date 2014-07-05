@@ -1,6 +1,6 @@
 package dio.clsswrk.leftjoin;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -26,9 +26,7 @@ public class ArrayHelperDelegate {
         }
         return false;
     }
-    private <T> boolean contains(T el, List<T> list) {
-        if (el == null || list == null)
-            throw new IllegalArgumentException("null in contains method arguments");
+    private <T> boolean contains(T el,List<T> list) {
         for (T t : list) {
             if (t == null)
                 continue;
@@ -38,6 +36,8 @@ public class ArrayHelperDelegate {
         return false;
     }
     private <T> T[] noDup(T[] array) {
+
+
         if (array == null)
             throw new IllegalArgumentException("null in noDup method argument");
         List<T> list = new ArrayList<T>();

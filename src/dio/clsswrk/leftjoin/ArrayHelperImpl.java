@@ -20,17 +20,16 @@ public class ArrayHelperImpl implements ArrayHelper {
         int count = 0;
 
         int[] tempRight = new int[leftArray.length + rightArray.length];
-        for (int i = 0;i < rightArray.length;i++){
-            for (int j = 0;j < leftArray.length;j++){
-                if ((leftArray[j] == rightArray[i])/*&&!(this.contains(leftArray[i], tempRight))*/) {
-                    tempRight[count] = leftArray[j];
+        for (int i : rightArray){
+            for (int j : leftArray){
+                if ((j == i)) {
+                    tempRight[count] = j;
                     count++;
                 }
             }
         }
         tempRight = trim(tempRight, count);
-        int[] temp = arrayMerge(leftArray, tempRight);
-        return temp;
+        return arrayMerge(leftArray, tempRight);
     }
 
     public int[] merge(int[] leftArray, int[] rightArray) {
@@ -43,8 +42,6 @@ public class ArrayHelperImpl implements ArrayHelper {
         if (isMaxValueSize(rightArray))
             rightArray = new int[0];
 
-        int count = 0;
-        int[] tempRight = new int[rightArray.length];
         if (isEmpty(leftArray) && isEmpty(rightArray)) {
             return leftArray;
         }
@@ -54,9 +51,7 @@ public class ArrayHelperImpl implements ArrayHelper {
         if (isEmpty(rightArray)) {
             return noDup(leftArray);
         }
-        int[] temp = arrayMerge(leftArray, rightArray);
-        temp = noDup(temp);
-        return temp;
+        return noDup(arrayMerge(leftArray, rightArray));
     }
 
     public Product[] mergeProduct(Product[] prod1, Product[] prod2) {
@@ -76,14 +71,13 @@ public class ArrayHelperImpl implements ArrayHelper {
         int minLength = (leftArray.length < rightArray.length) ? leftArray.length : rightArray.length;
         int[] tempArray = new int[minLength];
 
-        for (int i = 0;i < rightArray.length;i++) {
-            if (contains(rightArray[i], leftArray) && !contains(rightArray[i], tempArray)) {
-                tempArray[count] = rightArray[i];
+        for (int i : rightArray) {
+            if (contains(i, leftArray) && !contains(i, tempArray)) {
+                tempArray[count] = i;
                 count++;
             }
         }
-        int[] temp = trim(tempArray, count);
-        return temp;
+        return trim(tempArray, count);
     }
     public int[] outerUnion(int[] leftArray, int[] rightArray) {
 
@@ -94,26 +88,24 @@ public class ArrayHelperImpl implements ArrayHelper {
         int count = 0;
 
         int[] tempArray = new int[leftArray.length + rightArray.length];
-        for (int i = 0;i < leftArray.length;i++) {
-            if (!(contains(leftArray[i], rightArray) || contains(leftArray[i], tempArray))) {
-                tempArray[count] = leftArray[i];
+        for (int i : leftArray) {
+            if (!(contains(i, rightArray) || contains(i, tempArray))) {
+                tempArray[count] = i;
                 count++;
             }
         }
-        for (int i = 0;i < rightArray.length;i++) {
-            if (!(contains(rightArray[i], leftArray) || contains(rightArray[i], tempArray))) {
-                tempArray[count] = rightArray[i];
+        for (int i : rightArray) {
+            if (!(contains(i, leftArray) || contains(i, tempArray))) {
+                tempArray[count] = i;
                 count++;
             }
         }
-
-        int[] temp = trim(tempArray, count);
-        return temp;
+        return trim(tempArray, count);
     }
     private boolean contains(int el, int[] array) {
         boolean res = false;
-        for (int i = 0;i < array.length;i++){
-            if (el == array[i])
+        for (int i : array){
+            if (el == i)
                 res = true;
         }
         return res;
@@ -137,20 +129,22 @@ public class ArrayHelperImpl implements ArrayHelper {
     private int[] noDup(int[] array) {
         int count = 0;
         int[] tempArray = new int[array.length];
-        for (int i = 0;i < array.length;i++) {
-            if (!contains(array[i], tempArray)) {
-                tempArray[count] = array[i];
+        for (int i : array) {
+            if (!contains(i, tempArray)) {
+                tempArray[count] = i;
                 count++;
             }
         }
-        int[] res = trim(tempArray, count);
-        return res;
+
+        return trim(tempArray, count);
 
     }
     private int[] arrayMerge(int[] leftArray, int[] rightArray) {
         int[] res = new int[leftArray.length + rightArray.length];
-        for (int i = 0;i < leftArray.length;i++) {
-            res[i] = leftArray[i];
+        int index1 = 0;
+        for (int i : leftArray) {
+            res[index1] = i;
+            index1++;
         }
         for (int i = leftArray.length;i < res.length;i++) {
             res[i] = rightArray[i - leftArray.length];
@@ -159,8 +153,10 @@ public class ArrayHelperImpl implements ArrayHelper {
     }
     private Product[] productMerge(Product[] prod1, Product[] prod2) {
         Product[] res = new Product[prod1.length + prod2.length];
-        for (int i = 0;i < prod1.length;i++) {
-            res[i] = prod1[i];
+        int index = 0;
+        for (Product p : prod1) {
+            res[index] = p;
+            index++;
         }
         for (int i = prod1.length;i < res.length;i++) {
             res[i] = prod2[i - prod1.length];

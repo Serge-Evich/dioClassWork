@@ -121,6 +121,16 @@ public class Product {
         public Builder() {
 
         }
+        public Builder(Product product) {
+            this.name = product.name;
+            this.category = product.category;
+            this.height = product.height;
+            this.length = product.length;
+            this.price = product.price;
+            this.weight = product.weight;
+            this.width = product.width;
+
+        }
 
         public Builder name(String name) {
             this.name = name;

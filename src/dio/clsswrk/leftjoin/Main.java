@@ -8,6 +8,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
+
         ArrayHelperDelegate arrayHelperDelegate = new ArrayHelperDelegate(new ArrayHelperImpl());
         Product[] leftprods = new Product[4];
         Product[] rightprods = new Product[4];
