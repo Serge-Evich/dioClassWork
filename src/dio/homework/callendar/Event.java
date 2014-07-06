@@ -3,6 +3,7 @@ package dio.homework.callendar;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +63,11 @@ public class Event {
         private Date endDate;
 
         public Builder() {
-
+            description = "";
+            title = "";
+            attenders = new ArrayList<>();
+            startDate = new Date();
+            endDate = new Date();
         }
         public Builder(Event event) {
             this.attenders = event.attenders;
