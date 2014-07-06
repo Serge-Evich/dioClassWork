@@ -111,10 +111,10 @@ public class Event {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Event{");
 //        sb.append("id'").append(id).append('\'');
-        sb.append(", title=").append(title);
-        sb.append(", description=").append(description);
-        sb.append(", startDate=").append(startDate);
-        sb.append(", endDate=").append(endDate);
+        sb.append(" title=").append(title + "\n");
+        sb.append(", description=").append(description + "\n");
+        sb.append(", startDate=").append(startDate + "\n");
+        sb.append(", endDate=").append(endDate + "}" + "\n");
 
         return sb.toString();
     }
