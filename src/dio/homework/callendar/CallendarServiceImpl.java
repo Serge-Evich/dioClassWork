@@ -1,9 +1,6 @@
 package dio.homework.callendar;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 
 public class CallendarServiceImpl implements CallendarService<Event> {
@@ -20,6 +17,10 @@ public class CallendarServiceImpl implements CallendarService<Event> {
     private Long generateUUID() {
         UUID uuid = UUID.randomUUID();
         return uuid.getMostSignificantBits();
+    }
+
+    public Collection<Event> getEventCollection() {
+        return dataStore.values();
     }
 
     public String toString() {
