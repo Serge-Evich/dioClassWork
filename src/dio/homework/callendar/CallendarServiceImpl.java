@@ -3,7 +3,7 @@ package dio.homework.callendar;
 import java.util.*;
 
 
-public class CallendarServiceImpl implements CallendarService<Event> {
+public class CallendarServiceImpl implements CallendarService {
     private Map<Long, Event> dataStore = new HashMap<>();
     public void addEvent(Event event) {
         if (!dataStore.containsValue(event)) {
