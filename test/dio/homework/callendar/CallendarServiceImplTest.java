@@ -63,6 +63,17 @@ public class CallendarServiceImplTest {
         assertTrue(expectedResult.containsAll(testValue));
     }
     @Test
+    public void testAddEvent_Duplicates() throws Exception {
+        List<Event> expectedResult = new ArrayList<>();
+        expectedResult.add(event1);
+        testCallendarService.addEvent(event1);
+        testCallendarService.addEvent(event1);
+        List<Event> testValue = new ArrayList<>(testCallendarService.getEventCollection());
+        System.out.println(expectedResult);
+        System.out.println(testValue);
+        assertTrue(testValue.equals(expectedResult));
+    }
+    @Test
     public void testCreateEvent() throws Exception {
         Event expectedResult = new Event.Builder()
                 .description("desc")
