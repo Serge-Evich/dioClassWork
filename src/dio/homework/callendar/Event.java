@@ -12,6 +12,7 @@ public class Event {
 
 
     private final String description;
+    //local code review (vtegza): do not create it in Pojo, set it with Builder @ 07.07.14
     private final UUID id = UUID.randomUUID();
     private final List<String> attenders;
     private final String title;

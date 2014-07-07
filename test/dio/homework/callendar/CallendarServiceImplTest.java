@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertArrayEquals;
 
 public class CallendarServiceImplTest {
-    private CallendarService<Event> testCallendarService;
+    private CallendarService testCallendarService;
     private List<String> attenders1;
     private List<String> attenders2;
     Date startDate;
@@ -73,6 +73,8 @@ public class CallendarServiceImplTest {
         System.out.println(testValue);
         assertTrue(testValue.equals(expectedResult));
     }
+
+    //local code review (vtegza): test failing @ 07.07.14
     @Test
     public void testCreateEvent() throws Exception {
         Event expectedResult = new Event.Builder()

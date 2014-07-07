@@ -20,7 +20,7 @@ public class Main {
         emails.add("user7@mail.com");
         emails.add("user8@mail.com");
         emails.add("user9@mail.com");
-        CallendarService<Event> callendarService = new CallendarServiceImpl();
+        CallendarService callendarService = new CallendarServiceImpl();
 //        String[] test = {"1", "2", "3", "4", "5", "6", "7", "8"};
 //        descriptions = test;
         for (String desc : descriptions) {

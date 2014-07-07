@@ -1,15 +1,12 @@
 package dio.clsswrk.leftjoin;
 
-import java.lang.Math;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Димон on 24.06.2014.
  */
 public class ArrayHelperImpl implements ArrayHelper {
     @Override
-    public int[] leftUnion(int[] leftArray, int[] rightArray){
+    public int[] leftUnion(int[] leftArray, int[] rightArray) {
+        //local code review (vtegza): extract separated method @ 07.07.14
         if (leftArray == null)
             leftArray = new int[0];
         if (rightArray == null)
@@ -22,8 +19,8 @@ public class ArrayHelperImpl implements ArrayHelper {
         int count = 0;
 
         int[] tempRight = new int[leftArray.length + rightArray.length];
-        for (int i : rightArray){
-            for (int j : leftArray){
+        for (int i : rightArray) {
+            for (int j : leftArray) {
                 if ((j == i)) {
                     tempRight[count] = j;
                     count++;
@@ -35,6 +32,7 @@ public class ArrayHelperImpl implements ArrayHelper {
     }
 
     public int[] merge(int[] leftArray, int[] rightArray) {
+        //local code review (vtegza): extract separated method @ 07.07.14
         if (leftArray == null)
             leftArray = new int[0];
         if (rightArray == null)
@@ -59,6 +57,7 @@ public class ArrayHelperImpl implements ArrayHelper {
     public Product[] mergeProduct(Product[] prod1, Product[] prod2) {
         return productMerge(prod1, prod2);
     }
+
     public int[] innerUnion(int[] leftArray, int[] rightArray) {
 
         if (leftArray == null)
@@ -81,6 +80,7 @@ public class ArrayHelperImpl implements ArrayHelper {
         }
         return trim(tempArray, count);
     }
+
     public int[] outerUnion(int[] leftArray, int[] rightArray) {
 
         if (leftArray == null)
@@ -104,15 +104,16 @@ public class ArrayHelperImpl implements ArrayHelper {
         }
         return trim(tempArray, count);
     }
-    private boolean contains(int el, int[] array) {
-        boolean res = false;
-        for (int i : array){
-            if (el == i)
-                res = true;
-        }
-        return res;
 
+    //local code review (vtegza): simplify @ 07.07.14
+    private boolean contains(int el, int[] array) {
+        for (int i : array) {
+            if (el == i)
+                return true;
+        }
+        return false;
     }
+
     private int absSum(int[] array) {
         int sum = 0;
         for (int i : array) {
@@ -120,14 +121,14 @@ public class ArrayHelperImpl implements ArrayHelper {
         }
         return sum;
     }
+
     private boolean isEmpty(int[] array) {
-        if(array.length == 0)
+        if (array.length == 0)
             return true;
-        if (absSum(array) == 0)
-            return true;
-        else
-            return false;
+        //local code review (vtegza): simplify @ 07.07.14
+        return absSum(array) == 0;
     }
+
     private int[] noDup(int[] array) {
         int count = 0;
         int[] tempArray = new int[array.length];
@@ -141,6 +142,7 @@ public class ArrayHelperImpl implements ArrayHelper {
         return trim(tempArray, count);
 
     }
+
     private int[] arrayMerge(int[] leftArray, int[] rightArray) {
         int[] res = new int[leftArray.length + rightArray.length];
         int index1 = 0;
@@ -148,11 +150,12 @@ public class ArrayHelperImpl implements ArrayHelper {
             res[index1] = i;
             index1++;
         }
-        for (int i = leftArray.length;i < res.length;i++) {
-            res[i] = rightArray[i - leftArray.length];
-        }
+        //local code review (vtegza): use arrayCopy @ 07.07.14
+        //local code review (vtegza): leftArray.length - leftArray.length = 0 @ 07.07.14
+        System.arraycopy(rightArray, leftArray.length - leftArray.length, res, leftArray.length, res.length - leftArray.length);
         return res;
     }
+
     private Product[] productMerge(Product[] prod1, Product[] prod2) {
         Product[] res = new Product[prod1.length + prod2.length];
         int index = 0;
@@ -160,23 +163,23 @@ public class ArrayHelperImpl implements ArrayHelper {
             res[index] = p;
             index++;
         }
-        for (int i = prod1.length;i < res.length;i++) {
-            res[i] = prod2[i - prod1.length];
-        }
+        //local code review (vtegza): use arrayCopy @ 07.07.14
+        //local code review (vtegza): leftArray.length - leftArray.length = 0 @ 07.07.14
+        System.arraycopy(prod2, prod1.length - prod1.length, res, prod1.length, res.length - prod1.length);
         return res;
     }
+
     private int[] trim(int[] array, int length) {
         int[] res = new int[length];
-        for (int i = 0;i < res.length;i++) {
-            res[i] = array[i];
-        }
+        //local code review (vtegza): use arrayCopy @ 07.07.14
+        System.arraycopy(array, 0, res, 0, res.length);
         return res;
     }
+
     private boolean isMaxValueSize(int[] array) {
-        Integer length = Integer.valueOf(array.length);
-        if (length.equals(Integer.MAX_VALUE))
-            return true;
-        else
-            return false;
+        //local code review (vtegza): use autoboxing @ 07.07.14
+        Integer length = array.length;
+        //local code review (vtegza): simplify @ 07.07.14
+        return length.equals(Integer.MAX_VALUE);
     }
 }

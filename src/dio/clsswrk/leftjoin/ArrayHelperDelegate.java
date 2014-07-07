@@ -2,14 +2,15 @@ package dio.clsswrk.leftjoin;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Димон on 01.07.2014.
  */
 public class ArrayHelperDelegate {
     private final ArrayHelper arrayHelper;
+
     public ArrayHelperDelegate(ArrayHelper arrayHelper) {
         this.arrayHelper = arrayHelper;
     }
@@ -19,30 +20,29 @@ public class ArrayHelperDelegate {
         if (el == null || array == null)
             throw new IllegalArgumentException("null in contains method arguments");
         for (T t : array) {
-            if (t == null)
-                continue;
-            if (t.equals(el))
+            //local code review (vtegza): could be replaced with @ 07.07.14
+            if (el.equals(t))
                 return true;
         }
         return false;
     }
-    private <T> boolean contains(T el,List<T> list) {
+
+    //local code review (vtegza): simplify @ 07.07.14
+    private <T> boolean contains(T el, List<T> list) {
         for (T t : list) {
-            if (t == null)
-                continue;
-            if (t.equals(el))
+            if (el.equals(t))
                 return true;
         }
         return false;
     }
+
     private <T> T[] noDup(T[] array) {
         if (array == null)
             throw new IllegalArgumentException("null in noDup method argument");
-        List<T> list = new ArrayList<T>();
+        //local code review (vtegza): use diamond operator @ 07.07.14
+        List<T> list = new ArrayList<>();
         for (T t : array) {
-            if (t == null)
-                continue;
-            if (!contains(t, list)) {
+            if (t != null && !contains(t, list)) {
                 list.add(t);
             }
         }
