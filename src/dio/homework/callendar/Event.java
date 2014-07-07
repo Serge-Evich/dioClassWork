@@ -117,7 +117,7 @@ public class Event {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Event{");
-//        sb.append("id'").append(id).append('\'');
+        sb.append("id'").append(id.toString()).append('\'');
         sb.append(" title=").append(title + "\n");
         sb.append(", description=").append(description + "\n");
         sb.append(", startDate=").append(startDate + "\n");
@@ -129,7 +129,7 @@ public class Event {
     @Override
     public int hashCode() {
         int result = description.hashCode();
-//        result = 31 * result + id.hashCode();
+        result = 31 * result + id.hashCode();
         result = 31 * result + attenders.hashCode();
         result = 31 * result + title.hashCode();
         result = 31 * result + startDate.hashCode();
