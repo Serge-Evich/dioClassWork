@@ -6,12 +6,13 @@ package dio.homework.callendar;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Event {
 
 
     private final String description;
-//    private final Long id;
+    private final UUID id;
     private final List<String> attenders;
     private final String title;
     private final Date startDate;
@@ -31,9 +32,9 @@ public class Event {
         return this.description;
     }
 
-//    public Long getId() {
-//        return this.id;
-//    }
+    public UUID getId() {
+        return this.id;
+    }
 
     public List<String> getAttenders() {
         return this.attenders;
@@ -56,13 +57,14 @@ public class Event {
 
     public static class Builder {
         private String description;
-//        private Long id;
+        private UUID id;
         private List<String> attenders;
         private String title;
         private Date startDate;
         private Date endDate;
 
         public Builder() {
+            id = UUID.randomUUID();
             description = "";
             title = "";
             attenders = new ArrayList<>();
@@ -72,7 +74,7 @@ public class Event {
         public Builder(Event event) {
             this.attenders = event.attenders;
             this.description = event.description;
-//            this.id = event.id;
+            this.id = event.id;
             this.title = event.title;
             this.endDate = event.endDate;
             this.startDate = event.startDate;
@@ -141,10 +143,10 @@ public class Event {
 
         Event event = (Event) o;
 
+        if (!id.equals(event.id)) return false;
         if (!attenders.equals(event.attenders)) return false;
         if (!description.equals(event.description)) return false;
         if (!endDate.equals(event.endDate)) return false;
-//        if (!id.equals(event.id)) return false;
         if (!startDate.equals(event.startDate)) return false;
         if (!title.equals(event.title)) return false;
 
