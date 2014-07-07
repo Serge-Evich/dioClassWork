@@ -12,7 +12,7 @@ public class Event {
 
 
     private final String description;
-    private final UUID id;
+    private final UUID id = UUID.randomUUID();
     private final List<String> attenders;
     private final String title;
     private final Date startDate;
@@ -64,7 +64,7 @@ public class Event {
         private Date endDate;
 
         public Builder() {
-            id = UUID.randomUUID();
+
             description = "";
             title = "";
             attenders = new ArrayList<>();
