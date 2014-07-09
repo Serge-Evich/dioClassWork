@@ -1,15 +1,17 @@
 package dio.homework.callendar;
 
+import dio.homework.callendar.datastore.service.EventService;
+
 import java.util.*;
 
 
 public class CallendarServiceImpl implements CallendarService {
-    private Map<UUID, Event> dataStore = new HashMap<>();
-
+    private EventService eventService;
+    public CallendarServiceImpl(EventService eventService) {
+        this.eventService = eventService;
+    }
     public void addEvent(Event event) {
-        if (!dataStore.containsValue(event)) {
-            dataStore.put(event.getId(), event);
-        }
+        eventService.create(event);
     }
 
     public Event createEvent(String description, List<String> emails) {
@@ -26,12 +28,18 @@ public class CallendarServiceImpl implements CallendarService {
                 .build();
     }
 
-    public Collection<Event> getEventCollection() {
-        return dataStore.values();
+    public List<Event> getEventList() {
+        return eventService.findAll();
     }
 
-    //local code review (vtegza): what is the usage for toString here? @ 07.07.14
-    public String toString() {
-        return dataStore.toString();
+    public Event removeEvent(String title) {
+        List<Event> list = eventService.findAll();
+        for (Event event : list) {
+            if (event.getTitle().equals(title)) {
+               return eventService.delete(event);
+            }
+        }
+        return null;
     }
+
 }

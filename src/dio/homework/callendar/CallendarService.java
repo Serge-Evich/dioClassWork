@@ -11,7 +11,7 @@ public interface CallendarService {
     void addEvent(Event event);
     Event createEvent(String description, List<String> emails);
     Event createEvent(String title, String description, List<String> attenders, Date startDate, Date endDate);
-    //void removeEvent(T event);
-    Collection<Event> getEventCollection();
+    Event removeEvent(String title);
+    List<Event> getEventList();
 
 }

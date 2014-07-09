@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +56,7 @@ public class CallendarServiceImplTest {
         expectedResult.add(event2);
         testCallendarService.addEvent(event1);
         testCallendarService.addEvent(event2);
-        List<Event> testValue = new ArrayList<>(testCallendarService.getEventCollection());
+        List<Event> testValue = new ArrayList<>(testCallendarService.getEventList());
         System.out.println(event1);
         System.out.println(event2);
         assertTrue(expectedResult.containsAll(testValue));
@@ -68,7 +67,7 @@ public class CallendarServiceImplTest {
         expectedResult.add(event1);
         testCallendarService.addEvent(event1);
         testCallendarService.addEvent(event1);
-        List<Event> testValue = new ArrayList<>(testCallendarService.getEventCollection());
+        List<Event> testValue = new ArrayList<>(testCallendarService.getEventList());
         System.out.println(expectedResult);
         System.out.println(testValue);
         assertTrue(testValue.equals(expectedResult));
