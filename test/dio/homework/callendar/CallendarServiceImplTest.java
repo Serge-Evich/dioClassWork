@@ -24,7 +24,7 @@ public class CallendarServiceImplTest {
     public void setup() {
         startDate = new Date();
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        testCallendarService = context.getBean("callendarService", CallendarServiceImpl.class);
+        testCallendarService = context.getBean("calendarService", CallendarServiceImpl.class);
         attenders1 = new ArrayList<>();
         attenders1.add("user1@mail.ru");
         attenders1.add("user2@mail.ru");
