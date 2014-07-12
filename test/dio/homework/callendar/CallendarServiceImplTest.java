@@ -2,6 +2,8 @@ package dio.homework.callendar;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +23,8 @@ public class CallendarServiceImplTest {
     @Before
     public void setup() {
         startDate = new Date();
-        testCallendarService = new CallendarServiceImpl();
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        testCallendarService = context.getBean("callendarService", CallendarServiceImpl.class);
         attenders1 = new ArrayList<>();
         attenders1.add("user1@mail.ru");
         attenders1.add("user2@mail.ru");

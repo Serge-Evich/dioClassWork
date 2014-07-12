@@ -7,8 +7,11 @@ import dio.homework.callendar.datastore.dao.EventDaoImpl;
 import dio.homework.callendar.datastore.impl.EventToHashMapDataStore;
 import dio.homework.callendar.datastore.service.EventService;
 import dio.homework.callendar.datastore.service.EventServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,13 +31,16 @@ public class Main {
         emails.add("user8@mail.com");
         emails.add("user9@mail.com");
 
-        CallendarService callendarService = new CallendarServiceImpl(new EventServiceImpl(new EventDaoImpl(new EventToHashMapDataStore())));
-//        String[] test = {"1", "2", "3", "4", "5", "6", "7", "8"};
-//        descriptions = test;
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CallendarService callendarService = context.getBean("calendarService", CallendarServiceImpl.class);
+        String[] test = {"1", "2", "3", "4", "5", "6", "7", "8"};
+        descriptions = test;
         for (String desc : descriptions) {
             callendarService.addEvent(callendarService.createEvent(desc, emails));
         }
-//        System.out.println(callendarService);
+        for (Event e : callendarService.getEventList()) {
+            System.out.println(e);
+        }
 
     }
 }

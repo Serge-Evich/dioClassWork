@@ -121,8 +121,8 @@ public class Event implements Serializable{
         sb.append(" title=").append(title + "\n");
         sb.append(", description=").append(description + "\n");
         sb.append(", startDate=").append(startDate + "\n");
-        sb.append(", endDate=").append(endDate + "}" + "\n");
-
+        sb.append(", endDate=").append(endDate + "\n");
+        sb.append(", attenders=").append(attenders.toString());
         return sb.toString();
     }
 
