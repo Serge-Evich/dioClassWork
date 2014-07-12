@@ -75,7 +75,7 @@ public class EventToHashMapDataStoreTest {
         assertTrue(expectedResult.containsAll(testValue));
     }
     @Test
-    public void testAddEvent_Duplicates() throws Exception {
+    public void testSave_Duplicates() throws Exception {
         List<Event> expectedResult = new ArrayList<>();
         expectedResult.add(event1);
         testDataStore.save(event1);
