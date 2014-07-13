@@ -40,7 +40,7 @@ public class EventToHashMapDataStore implements DataStore<Event> {
 
     public Event remove(Event event) {
         if (dataStore.containsValue(event)) {
-            return dataStore.remove(event);
+            return dataStore.remove(event.getId());
         }
         return null;
     }

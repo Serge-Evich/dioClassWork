@@ -73,6 +73,7 @@ public class EventToHashMapDataStoreTest {
         System.out.println(event1);
         System.out.println(event2);
         assertTrue(expectedResult.containsAll(testValue));
+        assertTrue(testValue.containsAll(expectedResult));
     }
     @Test
     public void testSave_Duplicates() throws Exception {
@@ -85,5 +86,72 @@ public class EventToHashMapDataStoreTest {
         System.out.println(testValue);
         assertTrue(testValue.equals(expectedResult));
     }
+    @Test
+    public void testGet() throws Exception {
+        Event expectedResult = event1;
+        UUID event1uuid = event1.getId();
+        testDataStore.save(event3);
+        testDataStore.save(event1);
+        testDataStore.save(event2);
+        Event testValue = testDataStore.get(event1uuid);
+        System.out.println(expectedResult);
+        System.out.println(testValue);
+        assertTrue(testValue.equals(expectedResult));
+
+    }
+    @Test
+    public void testGetByName() throws Exception {
+        List<Event> expectedResult = new ArrayList<>();
+        String expectedResultName = event1.getTitle();
+        expectedResult.add(event1);
+        testDataStore.save(event2);
+        testDataStore.save(event1);
+        testDataStore.save(event3);
+        List<Event> testValue = testDataStore.getByName(expectedResultName);
+        System.out.println(expectedResult);
+        System.out.println(testValue);
+        assertTrue(testValue.equals(expectedResult));
+
+    }
+    @Test
+    public void testGetAll() throws Exception {
+        List<Event> expectedResult = new ArrayList<>();
+        expectedResult.add(event1);
+        expectedResult.add(event2);
+        expectedResult.add(event3);
+        testDataStore.save(event1);
+        testDataStore.save(event2);
+        testDataStore.save(event3);
+        List<Event> testValue = new ArrayList<>(testDataStore.getAll());
+        assertTrue(expectedResult.containsAll(testValue));
+        assertTrue(testValue.containsAll(expectedResult));
+    }
+    @Test
+    public void testUpdate() throws Exception {
+        Event expectedResult = new Event.Builder(event1)
+                .description("UpdatedEvent1")
+                .build();
+        String event1title = event1.getTitle();
+        testDataStore.save(event1);
+        testDataStore.save(event2);
+        testDataStore.save(event3);
+        testDataStore.update(expectedResult);
+        List<Event> event1List = testDataStore.getByName(event1title);
+        Event testValue = event1List.get(0);
+        assertTrue(expectedResult.equals(testValue));
+    }
+    @Test
+    public void testRemove() throws Exception {
+
+        testDataStore.save(event2);
+        testDataStore.save(event1);
+        testDataStore.save(event3);
+        List<Event> event1List = testDataStore.getByName(event1.getTitle());
+        Event removedEvent = testDataStore.remove(event1);
+        assertTrue(event1List.get(0).equals(removedEvent));
+        event1List = testDataStore.getByName(event1.getTitle());
+        assertTrue(event1List.isEmpty());
+    }
+
 
 }
