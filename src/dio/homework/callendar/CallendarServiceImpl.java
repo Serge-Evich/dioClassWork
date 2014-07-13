@@ -15,11 +15,12 @@ public class CallendarServiceImpl implements CallendarService {
     }
 
     public Event createEvent(String description, List<String> emails) {
-        return new Event.Builder().description(description).attenders(emails).build();
+        return new Event.Builder().id(generateUUID()).description(description).attenders(emails).build();
     }
 
     public Event createEvent(String title, String description, List<String> attenders, Date startDate, Date endDate) {
         return new Event.Builder()
+                .id(generateUUID())
                 .title(title)
                 .description(description)
                 .attenders(attenders)
@@ -40,6 +41,9 @@ public class CallendarServiceImpl implements CallendarService {
             }
         }
         return null;
+    }
+    private UUID generateUUID() {
+        return UUID.randomUUID();
     }
 
 }

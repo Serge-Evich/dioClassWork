@@ -117,11 +117,14 @@ public class Event implements Serializable{
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Event{");
-        sb.append("id'").append(id.toString()).append('\'');
+        if (id != null)
+            sb.append("id'").append(id.toString()).append('\'');
+        else
+            sb.append("id'").append("null").append('\'');
         sb.append(" title=").append(title + "\n");
-        sb.append(", description=").append(description + "\n");
-        sb.append(", startDate=").append(startDate + "\n");
-        sb.append(", endDate=").append(endDate + "\n");
+        sb.append(", description=").append(description + "\\n");
+        sb.append(", startDate=").append(startDate + "\\n");
+        sb.append(", endDate=").append(endDate + "\\n");
         sb.append(", attenders=").append(attenders.toString());
         return sb.toString();
     }
