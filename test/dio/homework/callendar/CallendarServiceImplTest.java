@@ -2,6 +2,7 @@ package dio.homework.callendar;
 
 import dio.homework.callendar.datastore.service.EventService;
 import dio.homework.callendar.datastore.service.EventServiceImpl;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -105,6 +106,18 @@ public class CallendarServiceImplTest {
                 .attenders(attenders1)
                 .build();
         assertTrue(expectedResult.equals(testValue));
+
+
+    }
+    @Test
+    public void testRemoveEvent() {
+        Event expectedResult = event1;
+        List<Event> testList = new ArrayList<>();
+        testList.add(event1);
+        when(testEventService.findAll()).thenReturn(testList);
+        when(testEventService.delete(event1)).thenReturn(event1);
+        Event testValue = testCallendarService.removeEvent(event1.getTitle());
+        Assert.assertEquals(expectedResult, testValue);
     }
 
 
