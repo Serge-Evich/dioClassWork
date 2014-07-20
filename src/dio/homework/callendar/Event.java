@@ -14,7 +14,7 @@ public class Event implements Serializable{
 
     private final String description;
     private final UUID id;
-    private final List<String> attenders;
+    private final List<Person> attenders;
     private final String title;
     private final Date startDate;
     private final Date endDate;
@@ -37,7 +37,7 @@ public class Event implements Serializable{
         return this.id;
     }
 
-    public List<String> getAttenders() {
+    public List<Person> getAttenders() {
         return this.attenders;
     }
 
@@ -59,7 +59,7 @@ public class Event implements Serializable{
     public static class Builder {
         private String description;
         private UUID id;
-        private List<String> attenders;
+        private List<Person> attenders;
         private String title;
         private Date startDate;
         private Date endDate;
@@ -80,7 +80,7 @@ public class Event implements Serializable{
             this.startDate = event.startDate;
         }
 
-        public Builder attenders(List<String> list) {
+        public Builder attenders(List<Person> list) {
             this.attenders = list;
             return this;
         }

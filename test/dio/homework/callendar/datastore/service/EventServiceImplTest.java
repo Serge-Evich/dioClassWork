@@ -1,27 +1,24 @@
 package dio.homework.callendar.datastore.service;
 
 import dio.homework.callendar.Event;
-import dio.homework.callendar.datastore.DataStore;
+import dio.homework.callendar.Person;
 
 import java.util.List;
 import java.util.Date;
 
 import dio.homework.callendar.datastore.dao.EventDao;
 import dio.homework.callendar.datastore.dao.EventDaoImpl;
-import dio.homework.callendar.datastore.impl.EventToHashMapDataStore;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 import static org.mockito.Mockito.*;
 
 public class EventServiceImplTest {
     private EventDao testEventDao;
-    private List<String> attenders1;
-    private List<String> attenders2;
+    private List<Person> attenders1;
+    private List<Person> attenders2;
     private Date startDate;
     private Date endDate;
     private Event event1;

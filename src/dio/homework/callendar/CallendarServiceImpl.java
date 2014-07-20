@@ -14,11 +14,11 @@ public class CallendarServiceImpl implements CallendarService {
         eventService.create(event);
     }
 
-    public Event createEvent(String description, List<String> emails) {
+    public Event createEvent(String description, List<Person> emails) {
         return new Event.Builder().id(generateUUID()).description(description).attenders(emails).build();
     }
 
-    public Event createEvent(String title, String description, List<String> attenders, Date startDate, Date endDate) {
+    public Event createEvent(String title, String description, List<Person> attenders, Date startDate, Date endDate) {
         return new Event.Builder()
                 .id(generateUUID())
                 .title(title)

@@ -5,8 +5,6 @@ import dio.homework.callendar.datastore.service.EventServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,20 +18,32 @@ import static org.mockito.Mockito.*;
 public class CallendarServiceImplTest {
     private CallendarService testCallendarService;
     private EventService testEventService;
-    private List<String> attenders1;
-    private List<String> attenders2;
+    private List<Person> attenders1;
+    private List<Person> attenders2;
     private Date startDate;
     private Date endDate;
     private Event event1;
     private Event event2;
     private Event event3;
+    private Person person1;
+    private Person person2;
+    private Person person3;
+    private Person person4;
+    private Person person5;
+    private Person person6;
+    private Person person7;
+    private Person person8;
+    private Person person9;
+    private Person person10;
+    private Person person11;
     @Before
     public void setup() {
         startDate = new Date();
 //        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        testCallendarService = context.getBean("calendarService", CallendarServiceImpl.class);
         attenders1 = new ArrayList<>();
-        attenders1.add("user1@mail.ru");
+
+        attenders1.add();
         attenders1.add("user2@mail.ru");
         attenders1.add("user3@mail.ru");
         attenders1.add("user4@mail.ru");
@@ -118,6 +128,11 @@ public class CallendarServiceImplTest {
         when(testEventService.delete(event1)).thenReturn(event1);
         Event testValue = testCallendarService.removeEvent(event1.getTitle());
         Assert.assertEquals(expectedResult, testValue);
+    }
+
+    @Test
+    public  void testFreeTimeCheck() {
+
     }
 
 

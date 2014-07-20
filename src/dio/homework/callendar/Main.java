@@ -1,12 +1,6 @@
 package dio.homework.callendar;
 
 
-import dio.homework.callendar.datastore.DataStore;
-import dio.homework.callendar.datastore.dao.EventDao;
-import dio.homework.callendar.datastore.dao.EventDaoImpl;
-import dio.homework.callendar.datastore.impl.EventToHashMapDataStore;
-import dio.homework.callendar.datastore.service.EventService;
-import dio.homework.callendar.datastore.service.EventServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,7 +16,7 @@ import java.util.List;
 public class Main {
 
     public static void main (String[] args) throws IOException {
-        List<String> emails = new ArrayList<>();
+        List<Person> emails = new ArrayList<>();
         emails.add("user1@mail.com");
         emails.add("user2@mail.com");
         emails.add("user3@mail.com");

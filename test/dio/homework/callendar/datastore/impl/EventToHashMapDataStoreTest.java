@@ -1,12 +1,10 @@
 package dio.homework.callendar.datastore.impl;
 
-import dio.homework.callendar.CallendarServiceImpl;
 import dio.homework.callendar.Event;
+import dio.homework.callendar.Person;
 import dio.homework.callendar.datastore.DataStore;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,8 +15,8 @@ import static org.junit.Assert.assertTrue;
 
 public class EventToHashMapDataStoreTest {
     private DataStore<Event> testDataStore;
-    private List<String> attenders1;
-    private List<String> attenders2;
+    private List<Person> attenders1;
+    private List<Person> attenders2;
     Date startDate;
     Date endDate;
     Event event1;
