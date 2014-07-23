@@ -33,27 +33,80 @@ public class CallendarServiceImplTest {
     private Person person6;
     private Person person7;
     private Person person8;
-    private Person person9;
-    private Person person10;
-    private Person person11;
+
     @Before
     public void setup() {
         startDate = new Date();
 //        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        testCallendarService = context.getBean("calendarService", CallendarServiceImpl.class);
+        person1 = new Person.Builder()
+                .email("hacker1@gmail.com")
+                .firstName("Cool1")
+                .surName("Hacker1")
+                .phoneNumber(111111)
+                .uuid(UUID.randomUUID())
+                .build();
+        person2 = new Person.Builder()
+                .email("hacker2@gmail.com")
+                .firstName("Cool12")
+                .surName("Hacker2")
+                .phoneNumber(222222)
+                .uuid(UUID.randomUUID())
+                .build();
+        person3 = new Person.Builder()
+                .email("hacker3@gmail.com")
+                .firstName("Cool3")
+                .surName("Hacker3")
+                .phoneNumber(333333)
+                .uuid(UUID.randomUUID())
+                .build();
+        person4 = new Person.Builder()
+                .email("hacker4@gmail.com")
+                .firstName("Cool4")
+                .surName("Hacker4")
+                .phoneNumber(444444)
+                .uuid(UUID.randomUUID())
+                .build();
+        person5 = new Person.Builder()
+                .email("hacker5@gmail.com")
+                .firstName("Cool5")
+                .surName("Hacker5")
+                .phoneNumber(555555)
+                .uuid(UUID.randomUUID())
+                .build();
+        person6 = new Person.Builder()
+                .email("hacker6@gmail.com")
+                .firstName("Cool6")
+                .surName("Hacker6")
+                .phoneNumber(666666)
+                .uuid(UUID.randomUUID())
+                .build();
+        person7 = new Person.Builder()
+                .email("hacker7@gmail.com")
+                .firstName("Cool7")
+                .surName("Hacker7")
+                .phoneNumber(777777)
+                .uuid(UUID.randomUUID())
+                .build();
+        person8 = new Person.Builder()
+                .email("hacker8@gmail.com")
+                .firstName("Cool8")
+                .surName("Hacker8")
+                .phoneNumber(888888)
+                .uuid(UUID.randomUUID())
+                .build();
         attenders1 = new ArrayList<>();
+        attenders1.add(person1);
+        attenders1.add(person2);
+        attenders1.add(person3);
+        attenders1.add(person4);
+        attenders1.add(person5);
 
-        attenders1.add();
-        attenders1.add("user2@mail.ru");
-        attenders1.add("user3@mail.ru");
-        attenders1.add("user4@mail.ru");
-        attenders1.add("user5@mail.ru");
         attenders2 = new ArrayList<>();
-        attenders2.add("hacker1@gmail.com");
-        attenders2.add("hacker2@gmail.com");
-        attenders2.add("hacker3@gmail.com");
-        attenders2.add("hacker4@gmail.com");
-        attenders2.add("hacker5@gmail.com");
+        attenders2.add(person6);
+        attenders2.add(person7);
+        attenders2.add(person8);
+
         endDate = new Date();
         event1 = new Event.Builder()
                 .id(UUID.randomUUID())
