@@ -12,6 +12,7 @@ public interface CallendarService {
     Event createEvent(String title, String description, List<Person> attenders, Date startDate, Date endDate);
     Event removeEvent(String title);
     List<Event> getEventList();
+    List<Event> getPersonEvents(Person person, Date startDate, Date endDate);
 
 
 }

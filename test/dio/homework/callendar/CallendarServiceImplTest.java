@@ -5,7 +5,10 @@ import dio.homework.callendar.datastore.service.EventServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,12 +19,20 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.mockito.Mockito.*;
 
 public class CallendarServiceImplTest {
+    private CallendarService testNoMockContainCallendarService;
     private CallendarService testCallendarService;
     private EventService testEventService;
     private List<Person> attenders1;
     private List<Person> attenders2;
-    private Date startDate;
-    private Date endDate;
+    private List<Person> attenders3;
+    private Date startDate1;
+    private Date startDate2;
+    private Date startDate3;
+    private Date startDate4;
+    private Date endDate1;
+    private Date endDate2;
+    private Date endDate3;
+    private Date endDate4;
     private Event event1;
     private Event event2;
     private Event event3;
@@ -33,12 +44,26 @@ public class CallendarServiceImplTest {
     private Person person6;
     private Person person7;
     private Person person8;
+    private SimpleDateFormat simpleDateFormat;
+    private List<Event> allEvents;
 
     @Before
     public void setup() {
-        startDate = new Date();
-//        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        testCallendarService = context.getBean("calendarService", CallendarServiceImpl.class);
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            startDate1 = simpleDateFormat.parse("01/07/2014");
+            endDate1 = simpleDateFormat.parse("02/07/2014");
+            startDate2 = endDate1;
+            endDate2 = simpleDateFormat.parse("03/07/2014");
+            startDate3 = endDate2;
+            endDate3 = simpleDateFormat.parse("04/07/2014");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        testNoMockContainCallendarService = context.getBean("calendarService", CallendarServiceImpl.class);
         person1 = new Person.Builder()
                 .email("hacker1@gmail.com")
                 .firstName("Cool1")
@@ -107,27 +132,40 @@ public class CallendarServiceImplTest {
         attenders2.add(person7);
         attenders2.add(person8);
 
-        endDate = new Date();
+        attenders3 = new ArrayList<>();
+        attenders3.add(person1);
+        attenders3.add(person2);
+        attenders3.add(person6);
+        attenders3.add(person7);
+
         event1 = new Event.Builder()
                 .id(UUID.randomUUID())
                 .title("test1")
                 .attenders(attenders1)
                 .description("test event1")
-                .startDate(startDate)
-                .endDate(endDate)
+                .startDate(startDate1)
+                .endDate(endDate1)
                 .build();
-        event2 = new Event.Builder(event1)
+        event2 = new Event.Builder()
                 .id(UUID.randomUUID())
                 .description("test event2")
                 .title("test2")
                 .attenders(attenders2)
+                .startDate(startDate2)
+                .endDate(endDate2)
                 .build();
-        event3 = new Event.Builder(event2)
+        event3 = new Event.Builder()
                 .id(UUID.randomUUID())
                 .description("test event3")
                 .title("test3")
-                .attenders(attenders2)
+                .attenders(attenders3)
+                .startDate(startDate3)
+                .endDate(endDate3)
                 .build();
+        allEvents = new ArrayList<>();
+        allEvents.add(event1);
+        allEvents.add(event2);
+        allEvents.add(event3);
         testEventService = mock(EventServiceImpl.class);
         testCallendarService = new CallendarServiceImpl(testEventService);
     }
@@ -150,12 +188,12 @@ public class CallendarServiceImplTest {
     public void testAddEvent_Duplicates() throws Exception {
         List<Event> expectedResult = new ArrayList<>();
         expectedResult.add(event1);
-        testCallendarService.addEvent(event1);
-        testCallendarService.addEvent(event1);
-        List<Event> testValue = new ArrayList<>(testCallendarService.getEventList());
+        testNoMockContainCallendarService.addEvent(event1);
+        testNoMockContainCallendarService.addEvent(event1);
+        List<Event> testValue = testNoMockContainCallendarService.getEventList();
         System.out.println(expectedResult);
         System.out.println(testValue);
-        assertTrue(testValue.equals(expectedResult));
+        Assert.assertEquals(expectedResult, testValue);
     }
 
     //local code review (vtegza): test failing @ 07.07.14
@@ -184,8 +222,14 @@ public class CallendarServiceImplTest {
     }
 
     @Test
-    public  void testFreeTimeCheck() {
+    public void testGetPersonEvents() {
+        List<Event> expectedResult = new ArrayList<>();
+        expectedResult.add(event1);
+        expectedResult.add(event3);
+        when(testEventService.findAll()).thenReturn(allEvents);
+        List<Event> testValue = testCallendarService.getPersonEvents(person1, startDate1, endDate3);
 
+        Assert.assertEquals(expectedResult, testValue);
     }
 
 
