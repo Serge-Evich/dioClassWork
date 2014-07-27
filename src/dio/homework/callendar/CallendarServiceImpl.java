@@ -73,6 +73,29 @@ public class CallendarServiceImpl implements CallendarService {
         }
         return personEvents;
     }
+    public List<Event> getPersonEvents(Person person) {
+        List<Event> allEvents = getEventList();
+        List<Event> personEvents = new ArrayList<>();
+        for (Event e : allEvents) {
+            List<Person> personList = e.getAttenders();
+            if (personList.contains(person))
+                personEvents.add(e);
+        }
+        return personEvents;
+    }
+
+    @Override
+    public boolean isPersonFree(Person person, GregorianCalendar startDate, GregorianCalendar endDate) throws IllegalArgumentException{
+        if (endDate.before(startDate)) throw new IllegalArgumentException("endDate before startDate");
+        List<Event> personEvents = getPersonEvents(person);
+        for (Event e : personEvents) {
+            if ((startDate.compareTo(e.getStartDate()) >= 0 && startDate.compareTo(e.getEndDate()) < 0)
+                    || (endDate.compareTo(e.getStartDate()) > 0  && endDate.compareTo(e.getEndDate()) <= 0))
+                return false;
+        }
+        return true;
+    }
+
     private UUID generateUUID() {
         return UUID.randomUUID();
     }

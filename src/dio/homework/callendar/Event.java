@@ -46,7 +46,7 @@ public class Event implements Serializable{
         return this.startDate;
     }
 
-    public Calendar getEndDate() {
+    public GregorianCalendar getEndDate() {
         return this.endDate;
     }
 

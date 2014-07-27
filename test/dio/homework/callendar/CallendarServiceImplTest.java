@@ -25,11 +25,9 @@ public class CallendarServiceImplTest {
     private GregorianCalendar startDate1;
     private GregorianCalendar startDate2;
     private GregorianCalendar startDate3;
-    private Date startDate4;
     private GregorianCalendar endDate1;
     private GregorianCalendar endDate2;
     private GregorianCalendar endDate3;
-    private Date endDate4;
     private Event event1;
     private Event event2;
     private Event event3;
@@ -41,12 +39,12 @@ public class CallendarServiceImplTest {
     private Person person6;
     private Person person7;
     private Person person8;
-    private SimpleDateFormat simpleDateFormat;
+
     private List<Event> allEvents;
 
     @Before
     public void setup() {
-        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
         startDate1 = new GregorianCalendar(2014, 07, 01);
         endDate1 = new GregorianCalendar(2014, 07, 02);
         startDate2 = endDate1;
@@ -225,7 +223,7 @@ public class CallendarServiceImplTest {
         Assert.assertEquals(expectedResult, testValue);
     }
     @Test
-    public void testCreateEvent_eventForAday() throws Exception{
+    public void testCreateEvent_eventForDay() throws Exception {
         GregorianCalendar dayStart = new GregorianCalendar(2014, 07, 01);
         GregorianCalendar dayEnd = new GregorianCalendar(2014, 07, 01, 23, 59, 60);
         Event testEvent = testCallendarService.createEvent("Test event", "Event for all long day", attenders1, startDate1);
@@ -234,6 +232,16 @@ public class CallendarServiceImplTest {
         Assert.assertEquals(dayStart, testDayStart);
         Assert.assertEquals(dayEnd, testDayEnd);
     }
+    @Test
+    public void testIsPersonFree() {
+        when(testEventService.findAll()).thenReturn(allEvents);
+        boolean testFalse = testCallendarService.isPersonFree(person1, startDate1, endDate1);
+        boolean testTrue = testCallendarService.isPersonFree(person1, startDate2, endDate2);
+
+        assertTrue(testTrue);
+        assertFalse(testFalse);
+    }
+
 
 
 

@@ -13,5 +13,6 @@ public interface CallendarService {
     Event removeEvent(String title);
     List<Event> getEventList();
     List<Event> getPersonEvents(Person person, GregorianCalendar startDate, GregorianCalendar endDate);
-
+    List<Event> getPersonEvents(Person person);
+    boolean isPersonFree(Person person, GregorianCalendar startDate, GregorianCalendar endDate);
 }
