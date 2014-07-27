@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,36 +17,33 @@ import java.util.List;
 public class Main {
 
     public static void main (String[] args) throws IOException {
-        List<Person> emails = new ArrayList<>();
-        emails.add("user1@mail.com");
-        emails.add("user2@mail.com");
-        emails.add("user3@mail.com");
-        emails.add("user4@mail.com");
-        emails.add("user5@mail.com");
-        emails.add("user6@mail.com");
-        emails.add("user7@mail.com");
-        emails.add("user8@mail.com");
-        emails.add("user9@mail.com");
+//        List<Person> emails = new ArrayList<>();
+//
+//
+//        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//        CallendarService callendarService = context.getBean("calendarService", CallendarServiceImpl.class);
+//        StringBuffer stringBuffer = new StringBuffer();
+//
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//        while (true) {
+//            String s = bufferedReader.readLine();
+//            if (!s.isEmpty())
+//                stringBuffer.append(s).append(" ");
+//            else
+//                break;
+//
+//        }
+//        for (String desc : stringBuffer.toString().split(" ")) {
+//            callendarService.addEvent(callendarService.createEvent(desc, emails));
+//        }
+//        for (Event e : callendarService.getEventList()) {
+//            System.out.println(e);
+//        }
+//
+//    }
+    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        CallendarService callendarService = context.getBean("calendarService", CallendarServiceImpl.class);
-        StringBuffer stringBuffer = new StringBuffer();
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        while (true) {
-            String s = bufferedReader.readLine();
-            if (!s.isEmpty())
-                stringBuffer.append(s).append(" ");
-            else
-                break;
-
-        }
-        for (String desc : stringBuffer.toString().split(" ")) {
-            callendarService.addEvent(callendarService.createEvent(desc, emails));
-        }
-        for (Event e : callendarService.getEventList()) {
-            System.out.println(e);
-        }
 
     }
 }

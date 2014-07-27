@@ -17,5 +17,13 @@
         <constructor-arg ref = "eventService"/>
 
     </bean>
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <!-- does not necessarily have to be the same name as the bean to be exported -->
+        <property name="serviceName" value="CallendarService"/>
+        <property name="service" ref="calendarService"/>
+        <property name="serviceInterface" value="dio.homework.callendar.CallendarService"/>
+        <!-- defaults to 1099 -->
+        <property name="registryPort" value="12346"/>
+    </bean>
 
 </beans>
