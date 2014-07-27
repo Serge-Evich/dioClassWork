@@ -4,8 +4,7 @@ import dio.homework.callendar.Event;
 import dio.homework.callendar.Person;
 import dio.homework.callendar.datastore.DataStore;
 
-import java.util.List;
-import java.util.Date;
+import java.util.*;
 
 import dio.homework.callendar.datastore.dao.EventDao;
 import dio.homework.callendar.datastore.dao.EventDaoImpl;
@@ -13,8 +12,7 @@ import dio.homework.callendar.datastore.impl.EventToHashMapDataStore;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.UUID;
+
 import static org.mockito.Mockito.*;
 /**
  * Created by Димон on 13.07.2014.
@@ -23,8 +21,8 @@ public class EventDaoImplTest {
     private DataStore<Event> testDataStore;
     private List<Person> attenders1;
     private List<Person> attenders2;
-    private Date startDate;
-    private Date endDate;
+    private GregorianCalendar startDate;
+    private GregorianCalendar endDate;
     private Event event1;
     private Event event2;
     private Event event3;

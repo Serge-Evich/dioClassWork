@@ -9,10 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertArrayEquals;
@@ -25,13 +22,13 @@ public class CallendarServiceImplTest {
     private List<Person> attenders1;
     private List<Person> attenders2;
     private List<Person> attenders3;
-    private Date startDate1;
-    private Date startDate2;
-    private Date startDate3;
+    private GregorianCalendar startDate1;
+    private GregorianCalendar startDate2;
+    private GregorianCalendar startDate3;
     private Date startDate4;
-    private Date endDate1;
-    private Date endDate2;
-    private Date endDate3;
+    private GregorianCalendar endDate1;
+    private GregorianCalendar endDate2;
+    private GregorianCalendar endDate3;
     private Date endDate4;
     private Event event1;
     private Event event2;
@@ -49,18 +46,15 @@ public class CallendarServiceImplTest {
 
     @Before
     public void setup() {
-        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            startDate1 = simpleDateFormat.parse("01/07/2014");
-            endDate1 = simpleDateFormat.parse("02/07/2014");
-            startDate2 = endDate1;
-            endDate2 = simpleDateFormat.parse("03/07/2014");
-            startDate3 = endDate2;
-            endDate3 = simpleDateFormat.parse("04/07/2014");
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        startDate1 = new GregorianCalendar(2014, 07, 01);
+        endDate1 = new GregorianCalendar(2014, 07, 02);
+        startDate2 = endDate1;
+        endDate2 = new GregorianCalendar(2014, 07, 03);
+        startDate3 = endDate2;
+        endDate3 = new GregorianCalendar(2014, 07, 04);
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+
 
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         testNoMockContainCallendarService = context.getBean("calendarService", CallendarServiceImpl.class);
@@ -228,8 +222,17 @@ public class CallendarServiceImplTest {
         expectedResult.add(event3);
         when(testEventService.findAll()).thenReturn(allEvents);
         List<Event> testValue = testCallendarService.getPersonEvents(person1, startDate1, endDate3);
-
         Assert.assertEquals(expectedResult, testValue);
+    }
+    @Test
+    public void testCreateEvent_eventForAday() throws Exception{
+        GregorianCalendar dayStart = new GregorianCalendar(2014, 07, 01);
+        GregorianCalendar dayEnd = new GregorianCalendar(2014, 07, 01, 23, 59, 60);
+        Event testEvent = testCallendarService.createEvent("Test event", "Event for all long day", attenders1, startDate1);
+        GregorianCalendar testDayStart = testEvent.getStartDate();
+        Calendar testDayEnd  = testEvent.getEndDate();
+        Assert.assertEquals(dayStart, testDayStart);
+        Assert.assertEquals(dayEnd, testDayEnd);
     }
 
 

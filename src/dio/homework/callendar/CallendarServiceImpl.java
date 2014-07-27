@@ -19,7 +19,25 @@ public class CallendarServiceImpl implements CallendarService {
         return new Event.Builder().id(generateUUID()).description(description).attenders(emails).build();
     }
     @Override
-    public Event createEvent(String title, String description, List<Person> attenders, Date startDate, Date endDate) {
+    public Event createEvent(String title, String description, List<Person> attenders, GregorianCalendar startDate, GregorianCalendar endDate) {
+        return new Event.Builder()
+                .id(generateUUID())
+                .title(title)
+                .description(description)
+                .attenders(attenders)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+    }
+    @Override
+    public Event createEvent(String title, String description, List<Person> attenders, GregorianCalendar initDate) {
+        GregorianCalendar startDate = new GregorianCalendar(initDate.get(GregorianCalendar.YEAR)
+                , initDate.get(GregorianCalendar.MONTH)
+                , initDate.get(GregorianCalendar.DAY_OF_MONTH));
+        GregorianCalendar endDate = new GregorianCalendar(initDate.get(GregorianCalendar.YEAR)
+                , initDate.get(GregorianCalendar.MONTH)
+                , initDate.get(GregorianCalendar.DAY_OF_MONTH)
+                , 23, 59, 60);
         return new Event.Builder()
                 .id(generateUUID())
                 .title(title)
@@ -44,7 +62,7 @@ public class CallendarServiceImpl implements CallendarService {
         return null;
     }
     @Override
-    public List<Event> getPersonEvents(Person person, Date startDate, Date endDate) {
+    public List<Event> getPersonEvents(Person person, GregorianCalendar startDate, GregorianCalendar endDate) {
         List<Event> allEvents = getEventList();
         List<Event> personEvents = new ArrayList<>();
         for (Event e : allEvents) {

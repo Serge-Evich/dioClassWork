@@ -4,10 +4,7 @@ package dio.homework.callendar;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class Event implements Serializable{
 
@@ -16,8 +13,8 @@ public class Event implements Serializable{
     private final UUID id;
     private final List<Person> attenders;
     private final String title;
-    private final Date startDate;
-    private final Date endDate;
+    private final GregorianCalendar startDate;
+    private final GregorianCalendar endDate;
 
     private Event(Builder builder) {
         this.id = builder.id;
@@ -45,11 +42,11 @@ public class Event implements Serializable{
         return this.title;
     }
 
-    public Date getStartDate() {
+    public GregorianCalendar getStartDate() {
         return this.startDate;
     }
 
-    public Date getEndDate() {
+    public Calendar getEndDate() {
         return this.endDate;
     }
 
@@ -61,15 +58,15 @@ public class Event implements Serializable{
         private UUID id;
         private List<Person> attenders;
         private String title;
-        private Date startDate;
-        private Date endDate;
+        private GregorianCalendar startDate;
+        private GregorianCalendar endDate;
 
         public Builder() {
             description = "";
             title = "";
             attenders = new ArrayList<>();
-            startDate = new Date();
-            endDate = new Date();
+            startDate = new GregorianCalendar();
+            endDate = new GregorianCalendar();
         }
         public Builder(Event event) {
             this.attenders = event.attenders;
@@ -100,12 +97,12 @@ public class Event implements Serializable{
             return this;
         }
 
-        public Builder endDate(Date endDate) {
+        public Builder endDate(GregorianCalendar endDate) {
             this.endDate = endDate;
             return this;
         }
 
-        public Builder startDate(Date startDate) {
+        public Builder startDate(GregorianCalendar startDate) {
             this.startDate = startDate;
             return this;
         }

@@ -6,10 +6,7 @@ import dio.homework.callendar.datastore.DataStore;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.Assert.assertTrue;
 
@@ -17,8 +14,8 @@ public class EventToHashMapDataStoreTest {
     private DataStore<Event> testDataStore;
     private List<Person> attenders1;
     private List<Person> attenders2;
-    Date startDate;
-    Date endDate;
+    GregorianCalendar startDate;
+    GregorianCalendar endDate;
     Event event1;
     Event event2;
     Event event3;

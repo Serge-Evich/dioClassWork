@@ -1,18 +1,17 @@
 package dio.homework.callendar;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
-/**
- * Created by Димон on 06.07.2014.
- */
+
 public interface CallendarService {
     void addEvent(Event event);
-    Event createEvent(String description, List<Person> emails);
-    Event createEvent(String title, String description, List<Person> attenders, Date startDate, Date endDate);
+    Event createEvent(String description, List<Person> attenders);
+    Event createEvent(String title, String description, List<Person> attenders, GregorianCalendar startDate, GregorianCalendar endDate);
+    Event createEvent(String title, String description, List<Person> attenders, GregorianCalendar startDate);
     Event removeEvent(String title);
     List<Event> getEventList();
-    List<Event> getPersonEvents(Person person, Date startDate, Date endDate);
-
+    List<Event> getPersonEvents(Person person, GregorianCalendar startDate, GregorianCalendar endDate);
 
 }
