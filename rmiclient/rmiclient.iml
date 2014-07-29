@@ -8,6 +8,37 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/aopalliance-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/junit-4.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/mockito-all-1.9.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-aop-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-aspects-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-beans-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-context-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-context-support-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-core-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-expression-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-instrument-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-instrument-tomcat-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-jdbc-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-jms-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-messaging-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-orm-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-oxm-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-test-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/spring-tx-4.0.0.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../lib/mockito-all-1.9.5.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="dioClassWork" />
   </component>
 </module>
 

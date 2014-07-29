@@ -5,7 +5,7 @@
 
 
     <bean id="calendarService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://192.168.23.18:12346/CalendarService"/>
+        <property name="serviceUrl" value="rmi://192.168.23.28:12346/CalendarService"/>
         <property name="serviceInterface" value="dio.homework.callendar.CallendarService"/>
     </bean>
 

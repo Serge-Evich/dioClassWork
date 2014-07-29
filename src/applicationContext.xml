@@ -23,7 +23,7 @@
         <property name="service" ref="calendarService"/>
         <property name="serviceInterface" value="dio.homework.callendar.CallendarService"/>
         <!-- defaults to 1099 -->
-        <property name="registryPort" value="12346"/>
+        <property name="registryPort" value="12348"/>
     </bean>
 
 </beans>

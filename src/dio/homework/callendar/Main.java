@@ -10,12 +10,13 @@ import java.io.InputStreamReader;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by Димон on 06.07.2014.
  */
 public class Main {
-
+    public static final Logger logger = Logger.getAnonymousLogger();
     public static void main (String[] args) throws IOException {
 //        List<Person> emails = new ArrayList<>();
 //
@@ -42,6 +43,7 @@ public class Main {
 //
 //    }
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    logger.info("Service started");
 
 
 
