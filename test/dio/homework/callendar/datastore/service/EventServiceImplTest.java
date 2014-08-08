@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;
-
+//local code review (vtegza): check compliler errors @ 08.08.14
 public class EventServiceImplTest {
     private EventDao testEventDao;
     private List<Person> attenders1;

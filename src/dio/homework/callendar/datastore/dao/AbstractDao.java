@@ -10,6 +10,7 @@ import java.util.UUID;
 /**
  * Created by Dmitry on 09.07.2014.
  */
+//local code review (vtegza): replace with delegation, - datastore as private final field @ 08.08.14
 public abstract class AbstractDao<T extends Serializable> implements Operations<T> {
 
 

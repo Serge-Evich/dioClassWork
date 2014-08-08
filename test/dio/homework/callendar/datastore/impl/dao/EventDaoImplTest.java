@@ -17,6 +17,7 @@ import static org.mockito.Mockito.*;
 /**
  * Created by Димон on 13.07.2014.
  */
+//local code review (vtegza): check compliler errors @ 08.08.14
 public class EventDaoImplTest {
     private DataStore<Event> testDataStore;
     private List<Person> attenders1;

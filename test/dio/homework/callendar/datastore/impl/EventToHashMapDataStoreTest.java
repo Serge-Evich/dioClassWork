@@ -10,6 +10,7 @@ import java.util.*;
 
 import static org.junit.Assert.assertTrue;
 
+//local code review (vtegza): check compliler errors @ 08.08.14
 public class EventToHashMapDataStoreTest {
     private DataStore<Event> testDataStore;
     private List<Person> attenders1;

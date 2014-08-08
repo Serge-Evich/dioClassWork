@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 /**
  * Created by Димон on 06.07.2014.
  */
+//local code review (vtegza): clean up @ 08.08.14
 public class Main {
     public static final Logger logger = Logger.getAnonymousLogger();
     public static void main (String[] args) throws IOException {

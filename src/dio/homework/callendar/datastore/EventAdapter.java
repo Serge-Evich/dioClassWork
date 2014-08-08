@@ -91,6 +91,7 @@ public class EventAdapter {
         this.endDate = endDate;
     }
 
+    //local code review (vtegza): no need in equals/hashcode if used only for jaxb @ 08.08.14
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
