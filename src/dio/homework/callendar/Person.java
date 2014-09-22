@@ -1,7 +1,6 @@
 package dio.homework.callendar;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -47,6 +46,7 @@ public class Person implements Serializable {
         private Integer phoneNumber;
 
         public Builder() {
+            //local code review (vtegza): generate default values outside pojo class @ 9/22/2014
             uuid = UUID.randomUUID();
             firstName = "John";
             surName = "Doe";
